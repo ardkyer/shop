@@ -1,3 +1,4 @@
+<!--list.html-->
 <!doctype html>
 <html>
 <head>
@@ -19,8 +20,28 @@
         <h4 th:text="${item.title}"></h4>
         <a th:href="@{'/detail/' + ${item.id}}">링크</a>
         <p th:text="${item.price}"></p>
+        <a th:href="@{'/edit/' + ${item.id}}">✏️</a>
+        <span th:onclick="fetch('/item?id=[[${item.id}]]', {method : 'DELETE'})
+            .then(r => r.text())
+            .then(() => {
+                location.reload();
+            })
+
+            ">🗑️</span>
     </div>
 </div>
+
+<button class="btn">테스트용</button>
+
+<script>
+    document.querySelectorAll('.btn')[0].addEventListener('click', function(){
+        fetch('/test1', {
+            method : 'POST',
+            headers : { 'Content-Type' : 'application/json'},
+            body : JSON.stringify({name : 'kim'})
+        })
+    })
+</script>
 
 </body>
 </html>
