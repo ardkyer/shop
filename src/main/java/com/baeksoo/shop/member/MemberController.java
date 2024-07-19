@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,22 +43,6 @@ public class MemberController {
         return "mypage.html";
     }
 
-    @GetMapping("/user/1")
-    @ResponseBody
-    public MemberDto user() {
-        var a = memberRepository.findById(1);
-        var result = a.get();
-        var data = new MemberDto(result.getUsername(), result.getDisplayName());
-        return data;
-    }
 }
 
-class MemberDto {
-    public String username;
-    public String displayName;
-    MemberDto(String a, String b){
-        this.username = a;
-        this.displayName = b;
-    }
-}
 

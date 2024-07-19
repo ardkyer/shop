@@ -1,4 +1,4 @@
-package com.baeksoo.shop.item;
+package com.baeksoo.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
