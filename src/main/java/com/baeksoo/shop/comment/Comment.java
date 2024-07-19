@@ -1,4 +1,4 @@
-package com.baeksoo.shop;
+package com.baeksoo.shop.comment;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,14 +9,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@ToString
 @Getter
 @Setter
-public class Item {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
-    public String title;
-    public Integer price;
+@ToString
+public class Comment {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+    public String username;
+    public String content;
+    public Long parentId;
 }
