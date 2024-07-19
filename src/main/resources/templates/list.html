@@ -13,6 +13,28 @@
 
 <div th:replace="~{ nav.html::navbar}"></div>
 
+<form action="/search" method="POST">
+    <input name="searchText" style="display: inline">
+    <button>검색</button>
+</form>
+
+<div th:if="${items.isEmpty()}">
+    <p>검색 결과가 없습니다.</p>
+</div>
+
+<div th:unless="${items.isEmpty()}">
+    <ul>
+        <li th:each="item : ${items}">
+            <a th:href="@{/detail/{id}(id=${item.id})}">
+                <span th:text="${item.title}"></span> -
+                <span th:text="${item.price + '원'}"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
 <div class="card" th:each="item : ${items}">
     <img src="https://placehold.co/300">
     <div>
