@@ -23,7 +23,7 @@ public class ItemController {
         List<Item> result = itemRepository.findAll();
         model.addAttribute("items", result);
 
-        return "list.html";
+        return "list";
     }
 
     @GetMapping("/write")
@@ -92,5 +92,13 @@ public class ItemController {
         return "redirect:/list";
     }
 
+    @PostMapping("/search")
+    String postSearch(@RequestParam String searchText, Model model){
+
+        var result = itemRepository.rawQuery1(searchText);
+        System.out.println(result);
+        model.addAttribute("items", result);
+        return "list";
+    }
 
 }
