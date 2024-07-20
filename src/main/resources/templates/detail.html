@@ -20,6 +20,13 @@
     <p th:text="${data.price + '원'}">7억</p>
 </div>
 
+<form action="/order" method="post">
+    <input name="title" th:value="${data.title}">
+    <input name="price" th:value="${data.price}">
+    <input name="count" placeholder="count">
+    <button>주문하기</button>
+</form>
+
 <div class="comments">
     <h4>댓글</h4>
     <ul>
